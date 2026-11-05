@@ -4,7 +4,7 @@ A complete Next.js website for **BETAROG — AI & Software Innovation Studio**. 
 
 ## Run locally
 
-Requires Node.js 22 or later and npm. Node.js 24 was used for this implementation.
+Requires Node.js 24.x and npm, matching the Vercel runtime.
 
 ```powershell
 npm ci
@@ -152,19 +152,15 @@ Privacy and terms are explicitly marked review templates and have `noindex` meta
 
 The generated reference set is in `design/`. Visual checks compare copy, type hierarchy, palette, section spacing, media treatment, responsive layout, and motion/fallback behavior. The mobile sculpture overlap and local production origin mismatch found in QA were corrected.
 
-## Vercel deployment preparation
+## GitHub and Vercel deployment
 
-The repository is configured for Vercel’s Next.js framework with `npm ci`, `npm run build`, and a 30-second contact function limit. No public deployment has been made. Connected Vercel lookups returned no team or existing BETAROG project, so no remote target was assumed or created.
+The source is tracked in [Frogbot3/BETAROG](https://github.com/Frogbot3/BETAROG), with `main` as the production branch. Vercel project `betarog` belongs to `anas-projects-1337ad89` and is connected to that repository. Its canonical production domain is [betarog.vercel.app](https://betarog.vercel.app).
 
-When you authorize deployment:
+The project uses Node.js 24.x, matching the tested local runtime, with the Next.js framework preset, `npm ci`, `npm run build`, and a 30-second contact function limit. Production and preview have `NEXT_PUBLIC_SITE_URL=https://betarog.vercel.app`, `CONTACT_ENABLED=false`, `ENABLE_DRAFT_PREVIEWS=false`, and the official Instagram URL configured. Email delivery still requires the provider setup and real receipt test above.
 
-1. Select/create the intended Vercel project and use this folder as its root. Choose a supported Node.js 22+ runtime and the Next.js framework preset.
-2. Configure the canonical `NEXT_PUBLIC_SITE_URL`. Keep contact disabled until the provider workflow above is tested. Add any supplied founder profiles separately from brand profiles.
-3. Review privacy/terms and enable deployment protection for the preview. Do not assume that a preview URL is private.
-4. Link locally with `npx vercel link`, then `npx vercel build`. Environment values should be configured in Vercel and scoped to preview/production as appropriate.
-5. **Publishing step, after authorization:** `npx vercel deploy` for the protected preview; verify it before any production promotion. Do not run `--prod` until publication is approved.
+For updates, run the verification commands, commit the changes, and push to `main`. Vercel builds the connected branch. Use a feature branch for preview deployments and verify the deployment before merging. Environment changes require a new build. When a custom domain is finalized, add it in Vercel and update `NEXT_PUBLIC_SITE_URL` before rebuilding.
 
-See [Vercel deployments](https://vercel.com/docs/deployments) and [environment variables](https://vercel.com/docs/environment-variables). Git is not available on PATH in the current environment; no repository initialization or remote push was claimed.
+The local `.vercel/project.json` link is excluded from Git, as are secrets, dependencies, build output, and test artifacts. See [Vercel deployments](https://vercel.com/docs/deployments) and [environment variables](https://vercel.com/docs/environment-variables).
 
 ## Remaining owner-supplied details
 
@@ -173,4 +169,3 @@ See [Vercel deployments](https://vercel.com/docs/deployments) and [environment v
 - Optional founder portrait and actual Mosque Suite/security project screenshots, repository details, and verified outcomes.
 - Reviewed article content and publication dates.
 - Confirmed legal operator, privacy contact, jurisdiction, and retention details.
-- Selected Vercel account/project and explicit authorization before public deployment.
